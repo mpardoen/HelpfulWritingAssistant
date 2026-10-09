@@ -5,6 +5,7 @@ import {
   bookTitle,
   chapterKeys,
   parseCrab,
+  parseFavorite,
   parseRating,
   parseTitle,
 } from './crab'
@@ -40,6 +41,13 @@ async function loadReader(fs: Files, name: string, work: string, keys: string[])
     const review = await fs.read(`${work}/${key}/reviews/${name}.md`)
     if (review !== null) ratings.push({ key, rating: parseRating(review) })
   }
+  // The favourite is carried by the most recent memory file that has one.
+  let favorite: string | null = null
+  for (const key of [...keys].reverse()) {
+    const memory = await fs.read(`readers/${name}/memory/${work}/${key}.md`)
+    favorite = memory === null ? null : parseFavorite(memory)
+    if (favorite !== null) break
+  }
   const numbers = ratings.flatMap(r => (r.rating === null ? [] : [r.rating]))
   const latest = ratings[ratings.length - 1]
   const earlier = average(numbers.slice(0, -1))
@@ -50,6 +58,7 @@ async function loadReader(fs: Files, name: string, work: string, keys: string[])
     title: parseTitle(personality, name),
     tagline,
     look,
+    favorite,
     latestRating,
     latestChapter: latest?.key ?? null,
     overallRating: average(numbers),

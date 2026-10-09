@@ -35,6 +35,18 @@ export function parseCrab(text: string): Look {
   return look
 }
 
+/** The reader's favourite part so far: the text under the `<!-- favorite -->` marker that ends a memory file. */
+export function parseFavorite(memory: string): string | null {
+  const at = memory.indexOf('<!-- favorite -->')
+  if (at < 0) return null
+  const lines = memory
+    .slice(at + '<!-- favorite -->'.length)
+    .split(/\r?\n/)
+    .map(l => l.trim())
+    .filter(l => l !== '' && !l.startsWith('#'))
+  return lines.length > 0 ? lines.join(' ') : null
+}
+
 export function bodyColor(look: Look): string {
   const c = (look.color ?? '').toLowerCase()
   if (/^#[0-9a-f]{6}$/.test(c)) return c

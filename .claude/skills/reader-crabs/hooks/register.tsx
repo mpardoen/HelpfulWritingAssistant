@@ -54,9 +54,19 @@ async function refresh($: Engine) {
   }
   const next = await loadSnapshot(files, wanted)
   await update($, snapshot, () => next)
+
+  // A new or changed review opens the panel by itself (not on the first load).
+  const sig = next.book
+    ? next.book.readers.map(r => `${r.name}:${r.latestChapter}:${r.latestRating}:${r.reviewed}:${r.favorite}`).join('|')
+    : null
+  const changed = lastSignature !== null && sig !== null && sig !== lastSignature
+  if (sig !== null) lastSignature = sig
+  else if (lastSignature === null) lastSignature = ''
+  if (changed) await $.ui.open({ id: PANE, title: 'Reader crabs' })
 }
 
 let isTicking = false
+let lastSignature: string | null = null
 
 // Re-reads the files every few seconds, so a review written by a reader agent
 // shows up without anyone pressing anything.
@@ -179,7 +189,7 @@ export const register: Register = on => {
           return (
             <Box key={r.name} flexDirection="column" marginBottom={1}>
               <Box>
-                <Box flexDirection="column" marginRight={1}>
+                <Box flexDirection="column" marginRight={1} flexShrink={0} width={16}>
                   {art.map((row, i) => (
                     <Text key={`${r.name}-${i}`}>
                       {row.map((cell, j) => (
@@ -190,8 +200,8 @@ export const register: Register = on => {
                     </Text>
                   ))}
                 </Box>
-                <Box flexDirection="column">
-                  <Text bold color={color}>
+                <Box flexDirection="column" flexShrink={1} flexGrow={1} minWidth={0}>
+                  <Text bold color={color} wrap="truncate-end">
                     {r.title}
                   </Text>
                   <Text dimColor wrap="truncate-end">
@@ -212,6 +222,12 @@ export const register: Register = on => {
                         <Text dimColor> ({r.rated} ch.)</Text>
                       </Text>
                     </Box>
+                  )}
+                  {r.favorite !== null && (
+                    <Text>
+                      <Text color={color}>♥ </Text>
+                      <Text italic>{r.favorite}</Text>
+                    </Text>
                   )}
                 </Box>
               </Box>

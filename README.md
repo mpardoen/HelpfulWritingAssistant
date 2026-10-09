@@ -3,7 +3,7 @@
 A [Claude Code](https://claude.com/claude-code) workspace for authors who write long works one chapter at a time. Drop a chapter in, and get:
 
 - **a proofread**: spelling, grammar and typography, style, and consistency with everything written before, as a report with paragraph references. Your chapter is never modified.
-- **a panel of readers**: personas you define, each with their own tastes and their own memory of your work so far, who comment on the new chapter the way that person would.
+- **a panel of readers**: personas you define, each with their own tastes and their own memory of your work so far, who comment on the new chapter the way that person would, and keep track of their favourite part of the book so far (shown in the readers panel).
 - **a whole-work analysis** when a tome is finished, and a way to have your readers re-read everything from the start after a rewrite.
 
 It is not tied to fiction. What gets checked comes from a *profile*; two are included (`fiction`, `academic`) and you can write your own.

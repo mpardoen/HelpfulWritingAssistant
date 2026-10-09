@@ -20,7 +20,7 @@ Have the readers read a chapter. Arguments: `$ARGUMENTS`. The first is the chapt
 
 4. When all have returned, run `python tools/book.py list <work>` and check that each reader appears in the chapter's `reviews` as `current`, and that each memory file exists. Report any reader whose files are missing.
 
-5. Give the author a digest: one line per reader (rating and reaction), then what several readers agree on and where they disagree, then the folder holding the comments. Build this from the agents' replies; open the review files only if a reply is unclear.
+5. Give the author a digest: one line per reader (rating and reaction), each followed by their favourite part so far when it changed with this chapter, then what several readers agree on and where they disagree, then the folder holding the comments. Build this from the agents' replies; open the review files only if a reply is unclear.
 
 6. If `later_already_reviewed` is not empty, add a note: the readers' memories of those later chapters were formed from the previous draft of this one, and `/review` on them (or `/reread <work>`) would refresh them.
 

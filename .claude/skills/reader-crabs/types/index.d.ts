@@ -3,6 +3,7 @@ export type CrabReader = {
   title: string
   tagline: string
   look: Record<string, string>
+  favorite: string | null
   latestRating: number | null
   latestChapter: string | null
   overallRating: number | null

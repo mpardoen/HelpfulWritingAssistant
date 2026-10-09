@@ -41,7 +41,23 @@ Read your memory files in order, then the chapter, then write:
 
 2. **Your memory of this chapter** at the memory path, with the sections from the profile's `Reader memory`, under the same first line and a `# <Reader name> remembers <chapter>` heading. About 250 words. This is all you will know of this chapter when you read the next one, so write what this reader would actually retain, at their level of attention, coloured by how they felt. Names they would not remember can be approximate or missing.
 
+   End the memory with your **favourite part of the work so far** (see below).
+
 If a file already exists at either path, it is from a previous draft of this chapter. Overwrite it without reading it: you are meeting this chapter for the first time.
+
+## Favourite part so far
+
+Every memory file ends with the one passage or moment of the work, from the first chapter up to this one, that this reader likes best. Look at the favourite in your latest earlier memory file, compare it with what you just read, and keep it or replace it, as this reader honestly would. Replacing is normal: it should follow your taste, not pile up.
+
+Write it exactly in this shape, as the last lines of the memory file. The first line is an HTML comment, copied as it is in every language, because the readers panel looks for it:
+
+```
+<!-- favorite -->
+## <heading "My favourite part so far", in the chapter's language>
+<a short quote or a paraphrase, 25 words at most, in your voice> (chapter <n>, ¶<n>)
+```
+
+A single sentence. No explanation of why: your comment is the place for that.
 
 ## Mode: reread
 
@@ -70,7 +86,7 @@ In titles, use the reader's name as their personality file gives it (the folder 
 
 ## When you are done
 
-Reply with four lines and nothing else: your rating or verdict, your reaction in one sentence, the thing you liked most, the thing that bothered you most.
+Reply with five lines and nothing else: your rating or verdict, your reaction in one sentence, the thing you liked most, the thing that bothered you most, your favourite part so far (as written in your memory).
 
 Only list a path as written if the write succeeded. If a write was refused or failed, say so first, name the path, and include the content you meant to write so it is not lost.
 
