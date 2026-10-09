@@ -13,4 +13,6 @@ Create the reader `$ARGUMENTS`. The layout and rules are in `CLAUDE.md`.
 
 4. Write `readers/<name>/PERSONALITY.md` with the template's sections filled in and its comments removed. Make the person specific. Where the author left a gap, choose something concrete that fits the rest and tell the author what you chose, so they can change it. A reader described only as "critical but fair" produces comments nobody could tell apart from any other reader's.
 
-5. Tell the author the reader will take part in the next `/review`, starting with no memory of any work. To have them catch up on chapters already written, run `/reread <work> <name>`.
+5. Design the reader's crab for the readers panel, following steps 2 and 3 of `.claude/commands/draw-crabs.md` for this one reader, and write `readers/<name>/crab.md`. Mention the choice in one line.
+
+6. Tell the author the reader will take part in the next `/review`, starting with no memory of any work. To have them catch up on chapters already written, run `/reread <work> <name>`.

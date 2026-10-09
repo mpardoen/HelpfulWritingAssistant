@@ -1,0 +1,6 @@
+{
+  "name": "reader-crabs",
+  "version": "0.1.0",
+  "description": "A side panel of crab readers showing how satisfied each is with the latest chapter and the book so far.",
+  "types": "./types/index.d.ts"
+}

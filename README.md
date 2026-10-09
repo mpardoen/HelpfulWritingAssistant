@@ -31,8 +31,29 @@ It is not tied to fiction. What gets checked comes from a *profile*; two are inc
 | `/split-book <book.docx> [work]` | Cuts a whole-book `.docx` into one `.docx` per chapter and files them in the work folder. |
 | `/proofread <chapter-file>` | Editorial pass. Writes `proofread.md` and a neutral `record.md` of the chapter. |
 | `/review <chapter-file> [reader ...]` | Every reader (or only those named) reads the chapter, writes a comment and updates their memory. |
+| `/draw-crabs [reader ...]` | Gives each reader a crab that looks like their personality (also done by `/new-reader`). |
+| `/crabs [book]` | Opens the readers panel (see below). |
 | `/tome-analysis <work>` | An editor re-reads the entire work and writes an analysis of the whole. |
 | `/reread <work> [reader ...]` | Readers set aside their memory of the work and re-read it from chapter one, then give a verdict on the whole. |
+
+## The readers panel
+
+`/crabs` opens a side panel with one crab per reader, showing how satisfied that reader is with **the latest chapter** and with **the book so far**:
+
+```
+   [▤▤▤]
+ \V/(^   ^)\V/     Marguerite
+   (  \_/  )       Retired teacher, spots every flaw
+  /\ /\ /\ /\       Latest  ██████░░ 3.8
+                   Overall ███████░ 4.1 (5 ch.)
+```
+
+- Satisfaction is the rating (out of 5) each reader gave in their comment; a rating on another scale (`8/10`) is converted. A ▲ or ▼ marks a latest chapter clearly better or worse than the earlier ones.
+- **◀ ▶** next to the title switch to another book. **Choose readers** shows or hides individual readers. **Refresh** rereads the files (it also happens by itself every few seconds and after every answer).
+- A crab's look (colour, eyes, claws, accessory) comes from `readers/<name>/crab.md`, written by `/new-reader` or `/draw-crabs`. It is plain text: change it by hand whenever you like.
+- The panel only reads your files; it never changes them.
+
+The panel is a Claude Code mod stored in `.claude/skills/reader-crabs`. The first time you open the project, Claude Code asks whether you trust it; accept, and `/crabs` is available. If it is not, type `/reload-plugins`.
 
 ## Where things go
 

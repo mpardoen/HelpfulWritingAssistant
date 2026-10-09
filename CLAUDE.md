@@ -7,6 +7,7 @@ This repository is a workspace for reviewing long-form writing chapter by chapte
 ```
 profiles/<profile>.md               what to check for a kind of work (fiction, academic, ...)
 readers/<name>/PERSONALITY.md       a reader persona
+readers/<name>/crab.md              the reader's crab in the readers panel (colour, eyes, claws, accessory)
 readers/<name>/memory/<work>/<chapter>.md    what that reader retains of each chapter
 readers/<name>/memory/_archive/     memories put away by /reread
 tools/book.py                       extraction and listings (Python 3, standard library)
@@ -31,6 +32,8 @@ A work is any top-level folder with a `BOOK.md`. Chapters are ordered by the fir
 | `/split-book <book.docx> [work]` | cuts a whole-book `.docx` into one `.docx` per chapter in the work folder |
 | `/proofread <chapter-file>` | spelling, style, consistency against earlier records; writes `proofread.md` and `record.md` |
 | `/review <chapter-file> [reader ...]` | each reader comments on the chapter and updates their memory |
+| `/draw-crabs [reader ...]` | designs the crab of each reader for the readers panel |
+| `/crabs [work]` | opens the readers panel: each reader's crab with satisfaction for the latest chapter and the whole work |
 | `/tome-analysis <work>` | the editor re-reads everything and writes `analysis/editor.md` |
 | `/reread <work> [reader ...]` | readers archive their memory and re-read the work from the start |
 
@@ -48,7 +51,7 @@ The work is done by the agents in `.claude/agents/` (`proofreader`, `reader`, `b
 
 ## Engine and content
 
-`README.md`, `LICENSE`, `CLAUDE.md`, `.claude/`, `tools/`, `profiles/fiction.md`, `profiles/academic.md`, `profiles/_TEMPLATE.md` and `readers/_TEMPLATE/` are the shared template. Works, readers and any added profile are the author's content. Keep changes to the two apart so that template updates merge cleanly.
+`README.md`, `LICENSE`, `CLAUDE.md`, `.claude/` (including the `reader-crabs` mod in `.claude/skills/`), `tools/`, `profiles/fiction.md`, `profiles/academic.md`, `profiles/_TEMPLATE.md` and `readers/_TEMPLATE/` are the shared template. Works, readers and any added profile are the author's content. Keep changes to the two apart so that template updates merge cleanly.
 
 `test-*/` and `readers/test-*/` are local validation fixtures, ignored by git.
 
