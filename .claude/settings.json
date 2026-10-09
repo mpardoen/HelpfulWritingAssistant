@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python tools/book.py:*)",
+      "Bash(python3 tools/book.py:*)",
+      "PowerShell(python tools/book.py:*)",
+      "Edit(/readers/**)",
+      "Edit(/*/BOOK.md)",
+      "Edit(/*/*/record.md)",
+      "Edit(/*/*/proofread.md)",
+      "Edit(/*/*/reviews/*.md)",
+      "Edit(/*/analysis/**)"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+# Local validation fixtures
+/test-*/
+/readers/test-*/
+
+# Word lock files, Python cache
+~$*
+__pycache__/
