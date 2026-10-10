@@ -34,7 +34,7 @@ It is not tied to fiction. What gets checked comes from a *profile*; two are inc
 | `/draw-crabs [reader ...]` | Gives each reader a crab that looks like their personality (also done by `/new-reader`). |
 | `/crabs [book]` | Opens the readers panel (see below). |
 | `/tome-analysis <work>` | An editor re-reads the entire work and writes an analysis of the whole. |
-| `/reread <work> [reader ...]` | Readers set aside their memory of the work and re-read it from chapter one, then give a verdict on the whole. |
+| `/reread <work> [reader ...]` | Readers set aside their memory of the work and re-read it from chapter one, writing a comment and a memory for every chapter, then give a verdict on the whole. |
 
 ## The readers panel
 

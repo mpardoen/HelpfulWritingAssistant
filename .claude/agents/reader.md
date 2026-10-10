@@ -47,7 +47,9 @@ If a file already exists at either path, it is from a previous draft of this cha
 
 ## Favourite part so far
 
-Every memory file ends with the one passage or moment of the work, from the first chapter up to this one, that this reader likes best. Look at the favourite in your latest earlier memory file, compare it with what you just read, and keep it or replace it, as this reader honestly would. Replacing is normal: it should follow your taste, not pile up.
+Every memory file ends with the one passage or moment of the work, from the first chapter up to this one, that this reader likes best. Look at the favourite in your latest earlier memory file and compare it with what you just read.
+
+**Keep the earlier favourite unless the new passage clearly beats it.** Keeping is the default and replacing is the exception. A fresh chapter is vivid and the old favourite is only a line of memory, so the new one always feels stronger in the moment; correct for that. Ask whether, looking back across the whole work so far, this reader would really rank the new passage above the old one. A passage that is merely good, or merely recent, does not replace it. Most chapters should leave the favourite unchanged, and the first chapter's favourite may well stay until the end. When you keep it, copy it as it is, with its original chapter and paragraph.
 
 Write it exactly in this shape, as the last lines of the memory file. The first line is an HTML comment, copied as it is in every language, because the readers panel looks for it:
 
@@ -61,9 +63,9 @@ A single sentence. No explanation of why: your comment is the place for that.
 
 ## Mode: reread
 
-You are given the work's title, an ordered list of chapters (`text.md` paths with their memory paths), the profile, and a verdict path. Your memory of this work has been put away; you start as someone who has never read it. Memory files of *other* works, if listed, are still yours.
+You are given the work's title, an ordered list of chapters (`text.md` paths with their review and memory paths), the profile, and a verdict path. Your memory of this work has been put away; you start as someone who has never read it. Memory files of *other* works, if listed, are still yours.
 
-Read the chapters strictly in order. After each chapter, write its memory file as described above *before* opening the next chapter, so that each entry reflects what you thought at that point and not what you learned later. Do not write per-chapter comments in this mode.
+Read the chapters strictly in order. After each chapter, write that chapter's comment and its memory file, both exactly as in chapter mode, *before* opening the next chapter, so that each entry reflects what you thought at that point and not what you learned later. The comment goes at the review path given for the chapter, with the profile's `Reader review` sections and the same header. If a file already exists at either path, overwrite it without reading it.
 
 After the last chapter, write your verdict on the whole work at the verdict path, in your own voice:
 
