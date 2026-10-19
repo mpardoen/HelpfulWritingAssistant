@@ -32,6 +32,7 @@ It is not tied to fiction. What gets checked comes from a *profile*; two are inc
 | `/proofread <chapter-file>` | Editorial pass. Writes `proofread.md` and a neutral `record.md` of the chapter. |
 | `/review <chapter-file> [reader ...]` | Every reader (or only those named) reads the chapter, writes a comment and updates their memory. |
 | `/draw-crabs [reader ...]` | Gives each reader a crab that looks like their personality (also done by `/new-reader`). |
+| `/close-tome <work> [reader ...]` | Readers condense their memory of a finished tome into one short file, so the next tome can assume they have read it. |
 | `/crabs [book]` | Opens the readers panel (see below). |
 | `/tome-analysis <work>` | An editor re-reads the entire work and writes an analysis of the whole. |
 | `/reread <work> [reader ...]` | Readers set aside their memory of the work and re-read it from chapter one, writing a comment and a memory for every chapter, then give a verdict on the whole. |
@@ -86,6 +87,12 @@ Reports point at passages with the paragraph numbers of `text.md` and quote the 
 **Rewriting a chapter** and running a command on it again replaces the earlier report, comment or memory for that chapter. Git keeps the old versions, and `text.md` gives you a readable diff of a `.docx` between drafts. Run `python tools/book.py list book-1` to see which reports are based on an older draft.
 
 **Language.** Everything is written in the language of the chapter, with that language's spelling and typographic rules.
+
+## Writing a series
+
+Each tome is its own work. Create the next one with `/new-book`, and say that it follows the previous one (or add `follows: book-1` to its `BOOK.md` front matter). Before reviewing its first chapter, run `/close-tome book-1`: each reader writes one short memory of the whole of tome 1 (about 400 words, from their own chapter memories, so what they forgot stays forgotten). From then on `/review` and `/reread` give the readers that memory before their memory of the current tome, `/proofread` checks consistency against the previous tome's records too, and `/tome-analysis` knows what the earlier analyses concluded. Readers are assumed to have read tome 1 before tome 2.
+
+A `/reread` of tome 2 never touches the memory of tome 1.
 
 ## Starting from a finished manuscript
 

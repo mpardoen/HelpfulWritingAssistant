@@ -3,6 +3,7 @@
 
   book.py extract <chapter>          write <work>/<chapter>/text.md and print the chapter's context
   book.py list <work>                chapters of a work, in order, with the state of their reports
+                                     (and the tomes it follows, with each reader's memory of them)
   book.py works                      folders that contain a BOOK.md
   book.py readers                    folders in readers/ that contain a PERSONALITY.md
   book.py archive-memory <work> <reader>
@@ -97,6 +98,24 @@ def resolve_work(name):
         known = ", ".join(w.name for w in works()) or "none yet, create one with /new-book"
         fail(f"'{name}' is not a work (no BOOK.md). Works: {known}")
     return work
+
+
+def previous_tomes(work):
+    """Works that `work` follows (BOOK.md `follows:`), oldest first."""
+    chain, seen = [], {work.name}
+    current = work
+    while True:
+        target = book_meta(current)[0].get("follows", "")
+        if not target:
+            return list(reversed(chain))
+        if target in seen:
+            fail(f"'follows' loops back to {target} (from {current.name})")
+        folder = ROOT / target.strip("/\\")
+        if not (folder / "BOOK.md").is_file():
+            fail(f"{current.name}/BOOK.md says it follows '{target}', which is not a work (no BOOK.md)")
+        seen.add(target)
+        chain.append(folder.resolve())
+        current = folder.resolve()
 
 
 def resolve_chapter(name):
@@ -315,6 +334,7 @@ def cmd_extract(args):
     print(f"paragraphs: {len(blocks)}")
     print(f"words: {words}")
     print("source: " + ("first extraction" if before is None else "unchanged" if before == digest else "changed since last extraction"))
+    print("previous_tomes: " + " ".join(t.name for t in previous_tomes(work)))
     print("earlier: " + " ".join(f.stem for f in earlier))
     print("earlier_without_record: " + " ".join(f.stem for f in earlier if not (work / f.stem / "record.md").is_file()))
     print("later_already_reviewed: " + " ".join(f.stem for f in later if any((work / f.stem / "reviews").glob("*.md"))))
@@ -328,6 +348,11 @@ def cmd_list(args):
     print(f"work: {work.name}")
     print(f"title: {meta.get('title', '')}")
     print(f"profile: profiles/{meta.get('profile', '')}.md")
+    tomes = previous_tomes(work)
+    print("previous_tomes: " + " ".join(t.name for t in tomes))
+    for tome in tomes:
+        have = [r for r in reader_names() if (ROOT / "readers" / r / "memory" / tome.name / "_tome.md").is_file()]
+        print(f"tome {tome.name}: _tome.md for {','.join(have) or 'no reader'}")
     for index, source in enumerate(chapters(work), 1):
         digest = source_hash(source)
         folder = work / source.stem

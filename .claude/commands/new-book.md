@@ -9,6 +9,7 @@ Create a new work in the folder `$ARGUMENTS` at the project root. The layout and
 
 2. Ask the author, in one round of questions:
    - the title;
+   - whether this work follows another one (a later tome of the same story). If so, which folder: it becomes `follows:`, and the previous tome's deliberate choices and glossary are offered as the starting point of this `BOOK.md`;
    - the profile: list the files in `profiles/` (except `_TEMPLATE.md`) with their first line. If none fits, offer to write a new profile from `profiles/_TEMPLATE.md` first;
    - what the work is, in a few sentences (premise or thesis statement, intended audience);
    - deliberate choices the proofreader must not flag: spelling variant, narrative tense and point of view, invented names and words, house notation, a citation style to enforce.
@@ -21,6 +22,7 @@ Create a new work in the folder `$ARGUMENTS` at the project root. The layout and
    ---
    title: <title>
    profile: <profile name, without .md>
+   follows: <previous tome's folder, only if it follows one>
    ---
 
    # <title>
@@ -39,4 +41,4 @@ Create a new work in the folder `$ARGUMENTS` at the project root. The layout and
 
 4. Tell the author where to put chapter files (directly in `<folder>/`, as `.docx`, `.md`, `.txt` or `.tex`, with a number in the name) and that `/proofread <file>` and `/review <file>` are the next steps. If `readers/` has no reader yet, mention `/new-reader`.
 
-`BOOK.md` is read by the proofreader and the editor, never by the readers.
+`BOOK.md` is read by the proofreader and the editor, never by the readers. If the work follows another, tell the author that the readers need a `_tome.md` of it first (`/close-tome <previous-tome>`).

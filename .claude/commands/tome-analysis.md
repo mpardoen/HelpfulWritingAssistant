@@ -12,6 +12,7 @@ Produce the overall analysis of the work `$ARGUMENTS`. The layout and rules are 
 3. Start one `book-editor` agent with paths, not content:
    - `<work>/BOOK.md` and the profile
    - every chapter's `<work>/<key>/text.md`, in order
+   - if the work follows other tomes (`python tools/book.py list "<work>"` prints `previous_tomes`): each previous tome's `analysis/editor.md` and `BOOK.md` when they exist, oldest first. The editor reads them for continuity and re-reads only this tome in full
    - output: `<work>/analysis/editor.md`
    - today's date
 

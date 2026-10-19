@@ -9,6 +9,7 @@ profiles/<profile>.md               what to check for a kind of work (fiction, a
 readers/<name>/PERSONALITY.md       a reader persona
 readers/<name>/crab.md              the reader's crab in the readers panel (colour, eyes, claws, accessory)
 readers/<name>/memory/<work>/<chapter>.md    what that reader retains of each chapter
+readers/<name>/memory/<work>/_tome.md   what that reader retains of a whole finished tome (from /close-tome or /reread)
 readers/<name>/memory/_archive/     memories put away by /reread
 tools/book.py                       extraction and listings (Python 3, standard library)
 <work>/BOOK.md                      title, profile, deliberate choices, glossary
@@ -21,7 +22,7 @@ tools/book.py                       extraction and listings (Python 3, standard 
 <work>/analysis/readers/<name>.md   readers' verdicts after a full re-read
 ```
 
-A work is any top-level folder with a `BOOK.md`. Chapters are ordered by the first number in their file name, unless `BOOK.md` has a `## Chapter order` section. Files whose name starts with `_` are not chapters (a whole-book original, `_front-matter.docx`). `python tools/book.py list <work>` shows the order and the state of every report.
+A work is any top-level folder with a `BOOK.md`. A later tome of a story is its own work whose `BOOK.md` front matter has `follows: <previous-work-folder>`; `python tools/book.py list <work>` shows the chain. Chapters are ordered by the first number in their file name, unless `BOOK.md` has a `## Chapter order` section. Files whose name starts with `_` are not chapters (a whole-book original, `_front-matter.docx`). `python tools/book.py list <work>` shows the order and the state of every report.
 
 ## Commands
 
@@ -33,6 +34,7 @@ A work is any top-level folder with a `BOOK.md`. Chapters are ordered by the fir
 | `/proofread <chapter-file>` | spelling, style, consistency against earlier records; writes `proofread.md` and `record.md` |
 | `/review <chapter-file> [reader ...]` | each reader comments on the chapter and updates their memory |
 | `/draw-crabs [reader ...]` | designs the crab of each reader for the readers panel |
+| `/close-tome <work> [reader ...]` | readers condense their chapter memories into one memory of the finished tome (`_tome.md`) |
 | `/crabs [work]` | opens the readers panel: each reader's crab with satisfaction for the latest chapter and the whole work |
 | `/tome-analysis <work>` | the editor re-reads everything and writes `analysis/editor.md` |
 | `/reread <work> [reader ...]` | readers archive their memory and re-read the work from the start |
@@ -43,8 +45,8 @@ The work is done by the agents in `.claude/agents/` (`proofreader`, `reader`, `b
 
 - **Never write to a chapter's source file.** All feedback goes into reports. The author applies what they agree with. `text.md` is written only by `tools/book.py`.
 - **Paths, not content.** Commands pass file paths to agents and relay their short replies. Do not read chapters into the main conversation for a review; that is what makes many chapters in one session possible.
-- **Earlier chapters are known through `record.md` only** during `/proofread`. Only `/tome-analysis` re-reads full text.
-- **Readers are isolated.** A reader agent sees its personality, its own memory of earlier chapters, and the chapter. Never `record.md`, `proofread.md`, `BOOK.md`, other readers' files, later chapters, or `_archive/`.
+- **Earlier chapters (and previous tomes) are known through `record.md` only** during `/proofread`. Only `/tome-analysis` re-reads full text.
+- **Readers are isolated.** A reader agent sees its personality, its own memory of earlier chapters, its `_tome.md` of each previous tome, and the chapter. Never `record.md`, `proofread.md`, `BOOK.md`, other readers' files, later chapters, or `_archive/`.
 - **Language follows the chapter.** Reports, records, comments and memories are written in the language of the chapter, applying that language's spelling and typography. Personality and profile files can be in any language.
 - **Re-running replaces.** Generated files are overwritten; git keeps the history. Every generated file starts with the first line of the `text.md` it was based on, which carries the source's hash, so `tools/book.py list` can tell which reports describe an older draft (`stale`).
 - **Profiles decide the criteria.** Nothing about what counts as consistency, what a chapter record contains or how a reader's comment is laid out belongs in commands or agents; it goes in `profiles/`.

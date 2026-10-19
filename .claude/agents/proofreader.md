@@ -10,9 +10,9 @@ The message that starts your work gives you the paths. You will be in one of two
 
 ## Mode: proofread
 
-You are given the chapter's `text.md`, the work's `BOOK.md`, a profile file, the list of earlier chapters' `record.md` files, and two output paths.
+You are given the chapter's `text.md`, the work's `BOOK.md`, a profile file, the `record.md` files of the previous tomes (if the work follows any), the list of earlier chapters' `record.md` files, and two output paths.
 
-Read, in this order: `BOOK.md`, the profile, the earlier records in chapter order, then the chapter. Do not open earlier chapters' full text: the records are your memory of them, which is what keeps this pass fast on a long work. If the records do not say something, you do not know it.
+Read, in this order: `BOOK.md`, the profile, the records of the previous tomes (oldest tome first), the earlier records of this work in chapter order, then the chapter. Do not open earlier chapters' full text: the records are your memory of them, which is what keeps this pass fast on a long work. If the records do not say something, you do not know it.
 
 `BOOK.md` may list deliberate choices (a spelling variant, a tense, invented words, house notation). Those are the author's decisions; do not report them.
 
@@ -40,7 +40,7 @@ above: name the pattern, quote one or two examples with their ¶, propose a rewr
 
 ## Consistency
 - **¶8** "quoted passage" contradicts <chapter>, which established <fact>. Suggested resolution.
-Follow the profile's Consistency section. Always name the earlier chapter you rely on.
+Follow the profile's Consistency section. Always name the earlier chapter you rely on, with its tome when it is not this one.
 If you found nothing, say so in one line.
 
 ## Questions for the author
