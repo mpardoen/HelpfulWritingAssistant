@@ -33,6 +33,7 @@ It is not tied to fiction. What gets checked comes from a *profile*; two are inc
 | `/review <chapter-file> [reader ...]` | Every reader (or only those named) reads the chapter, writes a comment and updates their memory. |
 | `/draw-crabs [reader ...]` | Gives each reader a crab that looks like their personality (also done by `/new-reader`). |
 | `/close-tome <work> [reader ...]` | Readers condense their memory of a finished tome into one short file, so the next tome can assume they have read it. |
+| `/revise <old-file> <new-file> [reader ...]` | Readers rate a rewritten chapter against what they remembered of the old one. |
 | `/crabs [book]` | Opens the readers panel (see below). |
 | `/tome-analysis <work>` | An editor re-reads the entire work and writes an analysis of the whole. |
 | `/reread <work> [reader ...]` | Readers set aside their memory of the work and re-read it from chapter one, writing a comment and a memory for every chapter, then give a verdict on the whole. |
@@ -85,6 +86,8 @@ Reports point at passages with the paragraph numbers of `text.md` and quote the 
 **Readers remember subjectively.** After each chapter, a reader writes down what *they* retained, in their own words. A skimmer forgets names; a nitpicker remembers the eye colour. That file is all they know of the chapter when the next one arrives. Readers never see the records, the proofreading report or each other's comments.
 
 **Rewriting a chapter** and running a command on it again replaces the earlier report, comment or memory for that chapter. Git keeps the old versions, and `text.md` gives you a readable diff of a `.docx` between drafts. Run `python tools/book.py list book-1` to see which reports are based on an older draft.
+
+**Revising a chapter.** After a rewrite, `/revise old-draft.docx chapter-3.docx` asks each reader how the change lands. They judge it against their own memory and comment on the old version, with the old and new texts and a paragraph diff to hand, and rate it from "much worse" to "much better". They stand where they were before the chapter: their memory of later chapters is set aside (in `readers/<name>/memory/_archive/`), since it describes a story that changed. Editing the chapter file in place works too: give the same path twice, and the last extraction serves as the old draft. Old drafts are kept in `chapter-3/versions/`, named by time.
 
 **Language.** Everything is written in the language of the chapter, with that language's spelling and typographic rules.
 

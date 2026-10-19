@@ -1,6 +1,8 @@
 # Next features
 
-Two features, designed but not built. Feature 2 is planned in detail at the end.
+Feature 2 (tomes) is built. Feature 1 (`/revise`, `rewind`, `versions/`) is built too; not yet run with real readers.
+Decision on the open question in feature 1: the revision agent edits `_tome.md` and the verdict only where the
+revision changes what it would say, from the new chapter alone; they are not marked stale.
 
 Build order: feature 2 first (chain resolution, `_tome.md`), then `rewind` and `/revise`, which depend on it.
 
